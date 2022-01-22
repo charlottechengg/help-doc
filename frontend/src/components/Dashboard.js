@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Button, Grid, IconButton, Box } from '@mui/material';
 import Dropdown from './Dropdown';
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
-
+import ResultBox from './ResultBox';
 
 const commonStyles = {
     bgcolor: 'background.paper',
@@ -14,6 +14,7 @@ const commonStyles = {
 
 let socket;
 let recorder;
+
 
 const Dashboard = ()  => {
     const [isRecording, setRecording] = useState(false)
@@ -116,20 +117,20 @@ const Dashboard = ()  => {
 
     return (
         <>
+
+            <Box sx={{ ...commonStyles, border: 1 }}>{text}</Box>
             <Grid justify="space-between" alignItems="center" container>
                 <Grid item>
-                    <Dropdown/>
+                    <ResultBox/>
                 </Grid>
                 <Grid item>
                     <Button onClick={recordButtonOnClick}>{isRecording? 'Stop' : 'Start'}</Button>
                 </Grid>
                 <Grid item>
-                    <Button>Translate</Button>
+                    <ResultBox/>
                 </Grid>
             </Grid>
-
-            <Box sx={{ ...commonStyles, border: 1 }}>{text}</Box>
-        </>
+      </>
     );
 };
 
