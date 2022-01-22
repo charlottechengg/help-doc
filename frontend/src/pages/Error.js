@@ -5,7 +5,7 @@ const index = () => {
     return (
         <div className="page">
             <header className="header">
-                <img src={'/logo.png'} className="logo" alt="logo" />
+                {/* <img src={'/logo.png'} className="logo" alt="logo" /> */}
                 <p>
                     Error: Page not found
                     <br />

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Dashboard from '../components/Dashboard';
 
 const Home = () => {
     // const [] = useState(null);
@@ -11,3 +13,5 @@ const Home = () => {
         </div>
     )
 }
+
+export default Home;
