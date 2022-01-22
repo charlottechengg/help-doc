@@ -1,55 +1,19 @@
-    import React from 'react';
+import React, { useState, useEffect } from 'react';
     import { Typography, Box, Paper } from '@mui/material';
     import { spacing } from '@mui/system';
 
-    export default function ResultBox() {
+    const ResultBox = ({text, type}) => {
         return (
-            <Box display="inline-block" >
-            <Paper elevation={15} sx={{  mx: "auto", p: 2, width: '100%', maxWidth: 600 , gap: 2, m: 2}} >
+            <Box display="inline-block"  sx={{
+                width: 300,
+                height: 300,
+            }} >
+            <Paper elevation={15} sx={{ p: 2, m: 2, width: '100%', height: '100%', minWidth: 550, minHeight: 600}} >
                     <Typography variant="h3" gutterBottom component="div">
-                        h3. Heading
+                        {type}
                     </Typography>
-                    <Typography variant="body1" gutterBottom>
-                        body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-                        blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur,
-                        neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
-                        quasi quidem quibusdam.
-                    </Typography>
-                    <Typography variant="body1" gutterBottom>
-                        body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-                        blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur,
-                        neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
-                        quasi quidem quibusdam.
-                    </Typography>
-                    <Typography variant="body1" gutterBottom>
-                        body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-                        blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur,
-                        neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
-                        quasi quidem quibusdam.
-                    </Typography>
-                    <Typography variant="body1" gutterBottom>
-                        body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-                        blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur,
-                        neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
-                        quasi quidem quibusdam.
-                    </Typography>
-                    <Typography variant="body1" gutterBottom>
-                        body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-                        blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur,
-                        neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
-                        quasi quidem quibusdam.
-                    </Typography>
-                    <Typography variant="body1" gutterBottom>
-                        body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-                        blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur,
-                        neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
-                        quasi quidem quibusdam.
-                    </Typography>
-                    <Typography variant="body1" gutterBottom>
-                        body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-                        blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur,
-                        neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
-                        quasi quidem quibusdam.
+                    <Typography key={text} variant="body1" gutterBottom>
+                        {text}
                     </Typography>
                     {/* <Typography variant="button" display="block" gutterBottom>
                         button text
@@ -65,3 +29,4 @@
     );
 }
         
+export default ResultBox

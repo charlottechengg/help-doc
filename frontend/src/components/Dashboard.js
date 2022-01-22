@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Button, Grid, IconButton, Box } from '@mui/material';
 import Dropdown from './Dropdown';
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 import ResultBox from './ResultBox';
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 const commonStyles = {
     bgcolor: 'background.paper',
@@ -19,11 +20,12 @@ let recorder;
 const Dashboard = ()  => {
     const [isRecording, setRecording] = useState(false)
     const [text, setText] = useState('')
-    let socket;
-    let recorder;
 
     const recordButtonOnClick = async () => {
-        setRecording(!isRecording)
+        setRecording(isRecording => !isRecording)
+        // useEffect( () => {
+        //     console.log(isRecording);
+        // }, [isRecording]);
         // if is recording, close socket, stop recorder, else process the audio
         if (!isRecording) {
             // get temp session token from server.js (backend)
@@ -52,6 +54,8 @@ const Dashboard = ()  => {
                     }
                 }
                 setText(msg);
+                console.log("here")
+                console.log(text)
             };
 
             socket.onerror = (event) => {
@@ -96,9 +100,6 @@ const Dashboard = ()  => {
                   })
                   .catch((err) => console.error(err));
               };
-
-            
-
         } else {
             // close socket
             if (socket) {
@@ -117,20 +118,19 @@ const Dashboard = ()  => {
 
     return (
         <>
-
-            <Box sx={{ ...commonStyles, border: 1 }}>{text}</Box>
-            <Grid justify="space-between" alignItems="center" container>
-                <Grid item>
-                    <ResultBox/>
+            <Button onClick={recordButtonOnClick}>{isRecording? 'Stop' : 'Start'}</Button>
+            <Grid justify="space-evenly" alignItems="stretch" justifyContent='center' container spacing={5}>
+                <Grid item xs={5} >
+                    <ResultBox text = {text} type = "Trascription"/>
                 </Grid>
-                <Grid item>
-                    <Button onClick={recordButtonOnClick}>{isRecording? 'Stop' : 'Start'}</Button>
+                <Grid item xs = {1} >
+                    <DoubleArrowIcon className="arrowIcon"sx={{ fontSize: 40 }}/>
                 </Grid>
-                <Grid item>
-                    <ResultBox/>
+                <Grid item xs={5}>
+                    <ResultBox text = {text} type = "Translation"/>
                 </Grid>
             </Grid>
-      </>
+        </>
     );
 };
 

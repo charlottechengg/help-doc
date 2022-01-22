@@ -6,10 +6,11 @@ const index = () => {
         <div className="page">
             <header className="header">
                 {/* <img src={'/logo.png'} className="logo" alt="logo" /> */}
-                <p>
+                <h1>
                     Error: Page not found
                     <br />
-                </p>
+                    <Link to="/">Return to home</Link>
+                </h1>
             </header>
         </div>
     );
