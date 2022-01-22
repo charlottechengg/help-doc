@@ -4,16 +4,12 @@ import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 import ResultBox from './ResultBox';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
-const commonStyles = {
-    bgcolor: 'background.paper',
-    m: 1,
-    borderColor: 'text.primary',
-    width: '50rem',
-    height: '50rem',
-};
 
 const Dashboard = (props)  => {
-    const {text} = props
+    const {text, language} = props
+
+    const [translatedText, setTranslatedText] = useState('')
+
 
     return (
         <>
@@ -25,7 +21,7 @@ const Dashboard = (props)  => {
                     <DoubleArrowIcon className="arrowIcon" sx={{ fontSize: 40 }}/>
                 </Grid>
                 <Grid item xs={5}>
-                    <ResultBox text = {text} type = "Translation"/>
+                    <ResultBox text = {translatedText} type = "Translation"/>
                 </Grid>
             </Grid>
         </>

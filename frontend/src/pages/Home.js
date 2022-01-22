@@ -8,10 +8,14 @@ const Home = () => {
     // const [] = useState(null);
     const [isRecording, setRecording] = useState(false)
     const [text, setText] = useState('')
+    const [language, setLanguage] = useState('')
+
+    console.log(language)
+
     return (
         <div className="Home">
-            <Header isRecording={isRecording} setRecording={setRecording} setText={setText}/>
-            <Dashboard text={text}/>
+            <Header isRecording={isRecording} setRecording={setRecording} setText={setText} setLanguage={setLanguage}/>
+            <Dashboard text={text} language={language}/>
             <Footer/>
         </div>
         
