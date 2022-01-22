@@ -110,7 +110,7 @@ const Header = (props)  => {
                 <Grid justify="space-between" alignItems="center" container>
                     <Grid item>
                         <IconButton aria-label="Mic" component="span" onClick={micOnClick}>
-                            {isRecording? <MicOffRoundedIcon/> : <MicIcon sx={{ fontSize: 35 }}/>}
+                            {isRecording? <MicOffRoundedIcon sx={{ fontSize: 35 }}/> : <MicIcon sx={{ fontSize: 35 }}/>}
                         </IconButton>
                     </Grid>
                     <Grid item>
