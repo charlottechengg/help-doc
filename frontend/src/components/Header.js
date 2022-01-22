@@ -11,7 +11,7 @@ const Header = ()  => {
             <Toolbar>
                 <Grid justify="space-between" alignItems="center" container>
                     <Grid item>
-                    <IconButton color="primary" aria-label="Mic" component="span">
+                    <IconButton aria-label="Mic" component="span">
                         <MicIcon />
                     </IconButton>
                     </Grid>
