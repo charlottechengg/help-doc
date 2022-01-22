@@ -2,14 +2,14 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-export default function Dropdown() {
+export default function Dropdown({type}) {
 	return (
 		<Autocomplete
 			id="dropdown-list"
 			sx={{ width: 300 }}
-			options={Languages}
+			options={type == "Languages" ? Languages : Audios}
 			autoHighlight
-			getOptionLabel={(option) => option.label}
+			getOptionLabel={(option) => option.name}
 			renderOption={(props, option) => (
 				<Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
 				{/* <img
@@ -19,13 +19,13 @@ export default function Dropdown() {
 					srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
 					alt=""
 				/> */}
-				{option.label} ({option.code})
+				{option.name} ({option.code})
 				</Box>
 			)}
 			renderInput={(params) => (
 				<TextField
 				{...params}
-				label="Choose a language"
+				name="Choose"
 				inputProps={{
 					...params.inputProps,
 					autoComplete: 'new-password', // disable autocomplete and autofill
@@ -38,10 +38,10 @@ export default function Dropdown() {
 
 // move to a different folder
 const Languages = [
-	{ code: 'EN', label: 'English' },
-	{ code: 'FR', label: 'French' },
+	{ code: 'EN', name: 'English' },
+	{ code: 'FR', name: 'French' },
 ];
 const Audios = [
-	{ code: '1', label: 'Conversation1' },
-	{ code: '2', label: 'Conversation1' },
+	{ code: '1', name: 'Conversation1' },
+	{ code: '2', name: 'Conversation1' },
 ];

@@ -3,6 +3,7 @@ import { AppBar, Button, Toolbar, IconButton, Grid } from '@mui/material';
 import MicIcon from '@mui/icons-material/Mic';
 import MicOffRoundedIcon from '@mui/icons-material/MicOffRounded';
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
+import Dropdown from './Dropdown';
 
 let socket;
 let recorder;
@@ -108,9 +109,12 @@ const Header = (props)  => {
             <Toolbar>
                 <Grid justify="space-between" alignItems="center" container>
                     <Grid item>
-                    <IconButton aria-label="Mic" component="span" onClick={micOnClick}>
-                        {isRecording? <MicOffRoundedIcon/> : <MicIcon/>}
-                    </IconButton>
+                        <IconButton aria-label="Mic" component="span" onClick={micOnClick}>
+                            {isRecording? <MicOffRoundedIcon/> : <MicIcon sx={{ fontSize: 35 }}/>}
+                        </IconButton>
+                    </Grid>
+                    <Grid item>
+                        <Dropdown type="Languages"/>
                     </Grid>
                 </Grid>
             </Toolbar>
