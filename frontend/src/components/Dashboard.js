@@ -10,9 +10,6 @@ const Dashboard = ()  => {
             <Grid item>
                         <Button>Add</Button>
             </Grid>
-            <Grid item>
-                        <Button>Translate</Button>
-                    </Grid>
         </Grid>
     );
 };
