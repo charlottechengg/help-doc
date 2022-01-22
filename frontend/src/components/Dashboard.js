@@ -1,14 +1,16 @@
 import React from 'react';
 import { Button, Grid, IconButton } from '@mui/material';
 import Dropdown from './Dropdown';
+import ResultBox from './ResultBox';
+
 const Dashboard = ()  => {
     return (
         <Grid justify="space-between" alignItems="center" container>
             <Grid item>
-                <Dropdown/>
+                <ResultBox/>
             </Grid>
             <Grid item>
-                        <Button>Add</Button>
+                <ResultBox/>
             </Grid>
         </Grid>
     );
