@@ -11,7 +11,7 @@ let recorder;
 const Header = (props)  => {
     // const history = useHistory();
     // const classes = useStyles();
-    const {isRecording, setRecording, setText} = props
+    const {isRecording, setRecording, setText, setLanguage} = props
     
     const micOnClick = async () => {
 
@@ -114,7 +114,7 @@ const Header = (props)  => {
                         </IconButton>
                     </Grid>
                     <Grid item>
-                        <Dropdown type="Languages"/>
+                        <Dropdown type="Languages" setLanguage={setLanguage}/>
                     </Grid>
                 </Grid>
             </Toolbar>

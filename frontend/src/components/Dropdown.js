@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-export default function Dropdown({type}) {
+export default function Dropdown({type, setLanguage}) {
 	return (
 		<Autocomplete
 			id="dropdown-list"
@@ -10,6 +10,12 @@ export default function Dropdown({type}) {
 			options={type == "Languages" ? Languages : Audios}
 			autoHighlight
 			getOptionLabel={(option) => option.name}
+			onChange={(event, newValue) => {
+				setLanguage(newValue.code)
+			}}
+			onInputChange={(event, newValue) => {
+				setLanguage(newValue.code)
+			}}
 			renderOption={(props, option) => (
 				<Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
 				{/* <img
@@ -38,8 +44,8 @@ export default function Dropdown({type}) {
 
 // move to a different folder
 const Languages = [
-	{ code: 'EN', name: 'English' },
-	{ code: 'FR', name: 'French' },
+	{ code: 'en', name: 'English' },
+	{ code: 'fr', name: 'French' },
 ];
 const Audios = [
 	{ code: '1', name: 'Conversation1' },
