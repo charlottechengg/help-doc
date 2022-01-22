@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Button, Toolbar, IconButton, Grid } from '@material-ui/core';
+import { AppBar, Button, Toolbar, IconButton, Grid } from '@mui/material';
 
 const Header = ()  => {
     // const history = useHistory();
