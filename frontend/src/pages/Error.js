@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 
 const index = () => {
     return (
-        <div className="page">
+        <div className="404-page">
             <header className="header">
                 {/* <img src={'/logo.png'} className="logo" alt="logo" /> */}
                 <p>
-                    Error: Page not found
+                    404: Page not found
                     <br />
+                    <Link to="/">Return Back to Home</Link>.
                 </p>
             </header>
         </div>

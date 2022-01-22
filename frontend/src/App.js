@@ -6,39 +6,12 @@ import './App.css';
 import ErrorNotFound from './pages/Error';
 import Home from './pages/Home';
 // import Save from './pages/saved';
-
-
-function PrivateRoute({ component: Component, ...rest }){
-  return (
-      <Route
-          {...rest}
-          render={(props) => {
-                  window.localStorage.setItem('location', props?.location?.pathname);
-                  return <Navigate to="/" />;
-          }}
-      />
-  );
-}
-
-function PublicRoute({ component: Component, onUserLogin, ...rest }) {
-  return (
-      <Route
-          {...rest}
-          render={(props) => {
-                  const route = window.localStorage.getItem('location') || '/';
-                  window.localStorage.removeItem('location');
-                  return <Navigate to={route} />;
-              }
-          }
-      />
-  );
-}
 const App = () => {
   return (
     <Router>
       <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/*" element={<ErrorNotFound />} />
+          <Route path="/404" element={<ErrorNotFound />} />
       </Routes>
     </Router>
   );
