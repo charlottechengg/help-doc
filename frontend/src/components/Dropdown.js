@@ -36,8 +36,12 @@ export default function Dropdown() {
 	);
 }
 
-// From https://bitbucket.org/atlassian/atlaskit-mk-2/raw/4ad0e56649c3e6c973e226b7efaeb28cb240ccb0/packages/core/select/src/data/countries.js
+// move to a different folder
 const Languages = [
-	{ code: 'EN', label: 'English', phone: '1-264' },
-	{ code: 'FR', label: 'French', phone: '355' },
+	{ code: 'EN', label: 'English' },
+	{ code: 'FR', label: 'French' },
+];
+const Audios = [
+	{ code: '1', label: 'Conversation1' },
+	{ code: '2', label: 'Conversation1' },
 ];
