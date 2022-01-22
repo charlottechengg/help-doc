@@ -28,3 +28,24 @@ translateText('Oggi è lunedì', 'en')
     .catch((err) => {
         console.log(err);
     });
+
+const listLanguages = async () => {
+    try {
+        // Lists available translation language with their names in English (the default).
+        const [languages] = await translate.getLanguages();
+        return languages;
+    } catch (error) {
+        console.log(`Error at listLanguages --> ${error}`);
+        return 0;
+    }
+
+}
+
+listLanguages()
+    .then((res) => {
+        console.log('Languages:');
+        res.forEach(language => console.log(language));
+    })
+    .catch((err) => {
+        console.log(err);
+    });
