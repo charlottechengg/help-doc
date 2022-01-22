@@ -6,12 +6,12 @@ import { Grid } from '@mui/material';
 
 const Home = () => {
     // const [] = useState(null);
+    const [isRecording, setRecording] = useState(false)
+    const [text, setText] = useState('')
     return (
         <div className="Home">
-            <span>
-                <Header/>
-                <Dashboard/>
-            </span>
+            <Header isRecording={isRecording} setRecording={setRecording} setText={setText}/>
+            <Dashboard text={text}/>
             <Footer/>
         </div>
         
