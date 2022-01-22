@@ -15,15 +15,11 @@ const commonStyles = {
 let socket;
 let recorder;
 
-
 const Dashboard = ()  => {
     const [isRecording, setRecording] = useState(false)
     const [text, setText] = useState('')
-    let socket;
-    let recorder;
 
     const recordButtonOnClick = async () => {
-        setRecording(!isRecording)
         // if is recording, close socket, stop recorder, else process the audio
         if (!isRecording) {
             // get temp session token from server.js (backend)
@@ -112,7 +108,8 @@ const Dashboard = ()  => {
                 recorder = null;
             }
         }
-        
+       
+        setRecording(!isRecording)
     }
 
     return (
