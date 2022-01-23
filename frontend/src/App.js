@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import './App.css';
 import ErrorNotFound from './pages/Error';
 import Home from './pages/Home';
+import Introduction from './pages/Introduction';
 // import Save from './pages/saved';
 
 
@@ -37,8 +38,13 @@ const App = () => {
   return (
     <Router>
       <Routes>
-          <Route path="/" element={<Home />} />
+        <Route path="/" element={<Introduction />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/*" element={<ErrorNotFound />} />
+          <Route path='/feedback' component={() => { 
+            window.location.href = 'https://google.com'; 
+            return null;
+          }}/>
       </Routes>
     </Router>
   );

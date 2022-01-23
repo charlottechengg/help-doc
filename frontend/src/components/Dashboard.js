@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { Button, Grid, IconButton, Box } from '@mui/material';
-import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 import ResultBox from './ResultBox';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
@@ -19,10 +18,10 @@ const Dashboard = (props)  => {
         <>
             <Grid justify="space-evenly" alignItems="stretch" justifyContent='center' container spacing={5}>
                 <Grid item xs={5} >
-                    <ResultBox text = {text} type = "Trascription"/>
+                    <ResultBox text = {text} type = "Transcription"/>
                 </Grid>
                 <Grid item xs = {1} >
-                    <DoubleArrowIcon className="arrowIcon" sx={{ fontSize: 40 }}/>
+                    <DoubleArrowIcon className="arrowIcon" sx={{ fontSize: 50 }}/>
                 </Grid>
                 <Grid item xs={5}>
                     <ResultBox text = {text} type = "Translation"/>

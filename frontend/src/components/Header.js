@@ -1,20 +1,50 @@
-import React from 'react';
-import { AppBar, Button, Toolbar, IconButton, Grid } from '@mui/material';
+import React, {useState} from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { AppBar, Button, Toolbar, IconButton, Grid, Box, Typography} from '@mui/material';
+import { useStyles } from '@mui/styles';
 import MicIcon from '@mui/icons-material/Mic';
+import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import MicOffRoundedIcon from '@mui/icons-material/MicOffRounded';
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 import Dropdown from './Dropdown';
-
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 let socket;
 let recorder;
 
-const Header = (props)  => {
+
+// const default_theme = createTheme({
+//     palette: {
+//         primary: {
+//             main: '#1A1A2E',
+//         },
+//         secondary: {
+//             main: '#ffffff',
+//         },
+//     }
+// });
+
+const Header = (props) => {
     // const history = useHistory();
     // const classes = useStyles();
+    const navigate = useNavigate();
+    const location = useLocation();
     const {isRecording, setRecording, setText} = props
-    
-    const micOnClick = async () => {
+    const showMic = location.pathname.includes('home')
+    const showLanguage = (location.pathname.includes('home') || location.pathname.includes('upload'))
 
+
+    const aboutOnClick = () =>{
+        navigate('../', { replace: true })
+    }
+    const uploadOnClick = () =>{
+        navigate('../', { replace: true })
+    }
+    const recordOnClick = () =>{
+        navigate('../home', { replace: true })
+    }
+
+    const micOnClick = async () => {
         // if is recording, close socket, stop recorder, else process the audio
         if (!isRecording) {
             // get temp session token from server.js (backend)
@@ -59,34 +89,34 @@ const Header = (props)  => {
                 // once socket is open, begin recording
                 setText('')
                 navigator.mediaDevices.getUserMedia({ audio: true })
-                  .then((stream) => {
-                    recorder = new RecordRTC(stream, {
-                      type: 'audio',
-                      mimeType: 'audio/webm;codecs=pcm', // endpoint requires 16bit PCM audio
-                      recorderType: StereoAudioRecorder,
-                      timeSlice: 250, // set 250 ms intervals of data that sends to AAI
-                      desiredSampRate: 16000,
-                      numberOfAudioChannels: 1, // real-time requires only one channel
-                      bufferSize: 4096,
-                      audioBitsPerSecond: 128000,
-                      ondataavailable: (blob) => {
-                        const reader = new FileReader();
-                        reader.onload = () => {
-                          const base64data = reader.result;
-          
-                          // audio data must be sent as a base64 encoded string
-                          if (socket) {
+                    .then((stream) => {
+                        recorder = new RecordRTC(stream, {
+                        type: 'audio',
+                        mimeType: 'audio/webm;codecs=pcm', // endpoint requires 16bit PCM audio
+                        recorderType: StereoAudioRecorder,
+                        timeSlice: 250, // set 250 ms intervals of data that sends to AAI
+                        desiredSampRate: 16000,
+                        numberOfAudioChannels: 1, // real-time requires only one channel
+                        bufferSize: 4096,
+                        audioBitsPerSecond: 128000,
+                        ondataavailable: (blob) => {
+                            const reader = new FileReader();
+                            reader.onload = () => {
+                            const base64data = reader.result;
+            
+                            // audio data must be sent as a base64 encoded string
+                            if (socket) {
                             socket.send(JSON.stringify({ audio_data: base64data.split('base64,')[1] }));
-                          }
-                        };
-                        reader.readAsDataURL(blob);
-                      },
-                    });
-          
-                    recorder.startRecording();
-                  })
-                  .catch((err) => console.error(err));
-              };
+                            }
+                            };
+                            reader.readAsDataURL(blob);
+                        },
+                        });
+            
+                        recorder.startRecording();
+                    })
+                    .catch((err) => console.error(err));
+                };
 
         } else {
             // close socket
@@ -105,20 +135,71 @@ const Header = (props)  => {
     }
 
     return (
-        <AppBar position="static">
-            <Toolbar>
-                <Grid justify="space-between" alignItems="center" container>
-                    <Grid item>
-                        <IconButton aria-label="Mic" component="span" onClick={micOnClick}>
-                            {isRecording? <MicOffRoundedIcon sx={{ fontSize: 35 }}/> : <MicIcon sx={{ fontSize: 35 }}/>}
-                        </IconButton>
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static" color = "inherit" enableColorOnDark={true}>
+                <Toolbar >
+                    <Grid justify="space-between" alignItems="center" container>
+                        <Grid item>
+                            <img src={'../../logo.png'} className="logo" alt="logo" />
+                        </Grid>
+                        <Grid item>
+                            <Typography size="large"
+                                edge="start"
+                                color="inherit"
+                                sx={{ mr: 2 }}>HelpDoc!</Typography>
+                        </Grid>
+
+                        <Grid item>
+                            <Button
+                                size="large"
+                                edge="start"
+                                color="inherit"
+                                sx={{ mr: 2 }}
+                                onClick={aboutOnClick}
+                            >About
+                            </Button>
+                        </Grid>
+                        <Grid item>
+                            <Button
+                                size="large"
+                                edge="start"
+                                color="inherit"
+                                sx={{ mr: 2 }}
+                                onClick={() => {
+                                    navigate('../home', { replace: true })}}
+                            >Record
+                            </Button>
+                        </Grid>
+                        <Grid item>
+                            {/* <IconButton aria-label="Upload" component="span" >
+                                <DriveFolderUploadIcon sx={{ fontSize: 35 }}/>
+                            </IconButton> */}
+                            <Button
+                                size="large"
+                                edge="start"
+                                color="inherit"
+                                sx={{ mr: 2 }}
+                            ><a target="_blank" rel="noopener noreferrer" href="https://google.com">Feedback</a>
+                            </Button>
+                        </Grid>
+                        </Grid>
+                        <Grid container justify="flex-end">
+                            {showMic ? 
+                                <Grid item>
+                                    <IconButton aria-label="Mic" component="span" onClick={micOnClick}>
+                                        {isRecording? <MicOffRoundedIcon sx={{ fontSize: 35 }}/> : <MicIcon sx={{ fontSize: 35 }}/>}
+                                    </IconButton>
+                                </Grid> : <></>
+                            }
+                            {showLanguage ?
+                                <Grid item>
+                                    <Dropdown type="Languages"/>
+                                </Grid> : <></>
+                            }
                     </Grid>
-                    <Grid item>
-                        <Dropdown type="Languages"/>
-                    </Grid>
-                </Grid>
-            </Toolbar>
-        </AppBar>
+                </Toolbar>
+            </AppBar>
+        </Box>
     );
 };
 

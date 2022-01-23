@@ -48,4 +48,30 @@
 .arrowIcon{
   position:absolute;
   bottom:55vh;
+
+}
+
+.backgroundImage{
+  position:relative;
+  left:10;
+  right:0;
+  display: block;  
+  margin-left: auto;  
+  margin-right: auto;  
+  margin-top: 10px;
+  width:85vw;
+}
+
+.text-on-image {
+  position: absolute;
+  right: 40%;
+  top: 45%;
+  color: white;
+  text-align: center;
+}
+
+
+.logo{
+  max-width:40px;
+  max-height: fit-content;
 }

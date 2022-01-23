@@ -9,7 +9,7 @@ const Home = () => {
     const [isRecording, setRecording] = useState(false)
     const [text, setText] = useState('')
     return (
-        <div className="Home">
+        <div className="page">
             <Header isRecording={isRecording} setRecording={setRecording} setText={setText}/>
             <Dashboard text={text}/>
             <Footer/>

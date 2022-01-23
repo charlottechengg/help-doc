@@ -3,10 +3,12 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 export default function Dropdown({type}) {
+
+
 	return (
 		<Autocomplete
 			id="dropdown-list"
-			sx={{ width: 300 }}
+			sx={{ width: 150 }}
 			options={type == "Languages" ? Languages : Audios}
 			autoHighlight
 			getOptionLabel={(option) => option.name}
@@ -30,7 +32,7 @@ export default function Dropdown({type}) {
 					...params.inputProps,
 					autoComplete: 'new-password', // disable autocomplete and autofill
 				}}
-				/>
+				label={type} />
 			)}
 		/>
 	);

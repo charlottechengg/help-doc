@@ -1,17 +1,20 @@
 import React from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 
 const index = () => {
     return (
         <div className="page">
-            <header className="header">
-                {/* <img src={'/logo.png'} className="logo" alt="logo" /> */}
-                <h1>
-                    Error: Page not found
+                <Header/>
+                <div className="page">
+                    <img src={'../../error.png'} alt="error" className="backgroundImage" />
+                </div>
+                <h1 className="text-on-image">
+                    404: Page not found
                     <br />
-                    <Link to="/">Return to home</Link>
                 </h1>
-            </header>
+                <Footer/>
         </div>
     );
 };

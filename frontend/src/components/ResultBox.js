@@ -15,15 +15,6 @@ import React, { useState, useEffect } from 'react';
                     <Typography key={text} variant="body1" gutterBottom>
                         {text}
                     </Typography>
-                    {/* <Typography variant="button" display="block" gutterBottom>
-                        button text
-                    </Typography> */}
-                    {/* <Typography variant="caption" display="block" gutterBottom>
-                        caption text
-                    </Typography>
-                    <Typography variant="overline" display="block" gutterBottom>
-                        overline text
-                    </Typography> */}
                 </Paper>
             </Box>
     );
