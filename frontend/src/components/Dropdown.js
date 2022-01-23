@@ -2,6 +2,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
+import Countries from '../lan.json';
+
 export default function Dropdown({type}) {
 	return (
 		<Autocomplete
@@ -37,10 +39,8 @@ export default function Dropdown({type}) {
 }
 
 // move to a different folder
-const Languages = [
-	{ code: 'EN', name: 'English' },
-	{ code: 'FR', name: 'French' },
-];
+const Languages = Countries;
+
 const Audios = [
 	{ code: '1', name: 'Conversation1' },
 	{ code: '2', name: 'Conversation1' },
