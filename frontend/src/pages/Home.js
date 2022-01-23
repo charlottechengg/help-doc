@@ -8,7 +8,7 @@ const Home = () => {
     // const [] = useState(null);
     const [isRecording, setRecording] = useState(false)
     const [text, setText] = useState('')
-    const [language, setLanguage] = useState('')
+    const [language, setLanguage] = useState('en')
 
     console.log(language)
 
