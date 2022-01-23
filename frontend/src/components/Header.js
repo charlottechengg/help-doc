@@ -11,7 +11,7 @@ let recorder;
 const Header = (props)  => {
     // const history = useHistory();
     // const classes = useStyles();
-    const {isRecording, setRecording, setText} = props
+    const {isRecording, setRecording, setText, setLanguage} = props
     
     const micOnClick = async () => {
 
@@ -110,11 +110,11 @@ const Header = (props)  => {
                 <Grid justify="space-between" alignItems="center" container>
                     <Grid item>
                         <IconButton aria-label="Mic" component="span" onClick={micOnClick}>
-                            {isRecording? <MicOffRoundedIcon/> : <MicIcon sx={{ fontSize: 35 }}/>}
+                            {isRecording? <MicOffRoundedIcon sx={{ fontSize: 35 }}/> : <MicIcon sx={{ fontSize: 35 }}/>}
                         </IconButton>
                     </Grid>
                     <Grid item>
-                        <Dropdown type="Languages"/>
+                        <Dropdown type="Languages" setLanguage={setLanguage}/>
                     </Grid>
                 </Grid>
             </Toolbar>
