@@ -4,6 +4,11 @@ import MicIcon from '@mui/icons-material/Mic';
 import MicOffRoundedIcon from '@mui/icons-material/MicOffRounded';
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 import Dropdown from './Dropdown';
+import Box from '@mui/material/Box';
+import Popper from '@mui/material/Popper';
+import Fade from '@mui/material/Fade';
+import { DropzoneArea } from 'material-ui-dropzone';
+
 
 let socket;
 let recorder;
@@ -104,6 +109,17 @@ const Header = (props)  => {
         setRecording(!isRecording)
     }
 
+    const [open, setOpen] = React.useState(false);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+        setOpen((previousOpen) => !previousOpen);
+    };
+
+    const canBeOpen = open && Boolean(anchorEl);
+    const id = canBeOpen ? 'transition-popper' : undefined;
+
     return (
         <AppBar position="static">
             <Toolbar>
@@ -115,6 +131,22 @@ const Header = (props)  => {
                     </Grid>
                     <Grid item>
                         <Dropdown type="Languages" setLanguage={setLanguage}/>
+                    </Grid>
+                    <Grid item>
+                        <button aria-describedby={id} type="button" onClick={handleClick}>
+                            Toggle Popper
+                            </button>
+                            <Popper id={id} open={open} anchorEl={anchorEl} transition>
+                                {({ TransitionProps }) => (
+                                    <Fade {...TransitionProps} timeout={350}>
+                                    <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+                                        <DropzoneArea
+                                            onChange={(files) => console.log('Files:', files)}
+                                        />
+                                    </Box>
+                                    </Fade>
+                                )}
+                            </Popper>
                     </Grid>
                 </Grid>
             </Toolbar>
