@@ -44,6 +44,10 @@ const listLanguages = async () => {
 listLanguages()
     .then((res) => {
         console.log('Languages:');
+        res.forEach(language => {
+            console.log("{ \"code\": \"" + language.code + "\", \"name\": \"" + language.name + "\" },");
+        });
+
         res.forEach(language => console.log(language));
     })
     .catch((err) => {

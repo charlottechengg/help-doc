@@ -29,7 +29,7 @@ const Header = (props) => {
     // const classes = useStyles();
     const navigate = useNavigate();
     const location = useLocation();
-    const {isRecording, setRecording, setText} = props
+    const {isRecording, setRecording, setText, setLanguage} = props
     const showMic = location.pathname.includes('home')
     const showLanguage = (location.pathname.includes('home') || location.pathname.includes('upload'))
 
@@ -179,11 +179,13 @@ const Header = (props) => {
                                 edge="start"
                                 color="inherit"
                                 sx={{ mr: 2 }}
-                            ><a target="_blank" rel="noopener noreferrer" href="https://google.com">Feedback</a>
+                            >
+                        <a target="_blank" rel="noopener noreferrer" href="https://devpost.com/software/help-doc?ref_content=existing_user_added_to_software_team&ref_feature=portfolio&ref_medium=email&utm_campaign=software&utm_content=added_to_software_team&utm_medium=email&utm_source=transactional">Feedback</a>
+                            Feedback
                             </Button>
                         </Grid>
                         </Grid>
-                        <Grid container justify="flex-end">
+                        <Grid container justify="flex-end" className="right-most">
                             {showMic ? 
                                 <Grid item>
                                     <IconButton aria-label="Mic" component="span" onClick={micOnClick}>
@@ -193,7 +195,7 @@ const Header = (props) => {
                             }
                             {showLanguage ?
                                 <Grid item>
-                                    <Dropdown type="Languages"/>
+                                    <Dropdown type="Languages" setLanguage={setLanguage}/>
                                 </Grid> : <></>
                             }
                     </Grid>
