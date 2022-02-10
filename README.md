@@ -8,6 +8,7 @@ Manyi Cheng(@manyicheng), Daniel Ko(@Dandoko), Senni Tan(@senni0418), William So
 
 A doctor’s note has always been seen as a scribble, never anything legible. Statistics across the nations describe patients being harmed by these misinterpretations, and thus, technology should come into play to allow for better communication.
 
+<img width="1440" alt="helpdoc" src="https://user-images.githubusercontent.com/59659987/153343147-70c747e7-41fa-4ef6-a762-5e4e1adf1b6b.png">
 
 
 ## What it does
