@@ -2,7 +2,10 @@
  <img src="https://user-images.githubusercontent.com/59659987/150670490-5fbc39e6-2bd9-4053-b5a8-010253ebf254.png" width="100" height="100">
 
 ## Developers
+Check out our **[Devpost](https://devpost.com/software/help-doc?ref_content=existing_user_added_to_software_team&ref_feature=portfolio&ref_medium=email&utm_campaign=software&utm_content=added_to_software_team&utm_medium=email&utm_source=transactional)**.
+
 Manyi Cheng(@manyicheng), Daniel Ko(@Dandoko), Senni Tan(@senni0418), William Song(@williamssong)
+
 
 ## Inspiration
 
